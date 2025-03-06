@@ -1,0 +1,66 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Telephone Number Validator Project</title>
+  </head>
+  <body>
+    <h1>Telephone Number Validator</h1>
+    <p>Please enter a phone number.</p>
+      <label for="numbers">Numbers:</label>
+      <input id="user-input"/>
+      <button id="check-btn" type="submit" onclick="document.getElementById("user-input").submit()">Check</button>
+      <button id="clear-btn" type="reset" onclick="document.getElementById("results-div").reset()">Clear Results</button>
+      <br></br>
+    <div class="results" id="results-div">
+      <output id="phonenum">
+      </output>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+const userInput = document.getElementById("user-input");
+const checkBtn = document.getElementById("check-btn");
+const clearBtn = document.getElementById("clear-btn");
+const resultsDiv = document.getElementById("results-div");
+const regex = /^[1]?\s?(\([0-9]{3}\)|( ?[0-9]{3}( |-)?))\s?[0-9]{3}(-| )?[0-9]{4}$/g;
+
+const clear = () => {
+  userInput.value ='';
+  resultsDiv.innerText ='';
+}
+
+clearBtn.addEventListener("click", clear);
+
+const check = () => {
+  if (userInput.value === "") {
+  return alert("Please provide a phone number");
+  } else if (userInput.value.match(regex)) {
+  return resultsDiv.innerText = `Valid US number: ${userInput.value}`;
+  } else {
+  return resultsDiv.innerText = `Invalid US number: ${userInput.value}`;
+  } 
+}
+
+checkBtn.addEventListener("click", check);
+
+** end of undefined **
+
+** start of undefined **
+
+.results{
+  font-weight: bold;
+  font-family: "Lucida Console", monospace;
+}
+
+** end of undefined **
+
